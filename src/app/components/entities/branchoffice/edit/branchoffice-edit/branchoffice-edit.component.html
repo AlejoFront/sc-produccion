@@ -1,0 +1,38 @@
+<div class="form-edit">
+    <div class="form-head">
+        <h2>Editando Sucursales</h2>
+    </div>
+    <div class="form-body-edit">
+        <form #branchofficeForm="ngForm" (ngSubmit)="save()">
+            <label>Direccion</label>
+            <input name="address" #address="ngModel" [(ngModel)]="branchoffice.address" required>
+            <small *ngIf="!address.valid && address.touched" style="color: red;">
+                Direccion invalida
+            </small>
+            <label>Nit</label>
+            <input name="enterpriseNit" #enterpriseNit="ngModel" [(ngModel)]="branchoffice.enterpriseNit" required
+                pattern="[0-9]+"><br><br>
+            <small *ngIf="!enterpriseNit.valid && enterpriseNit.touched" style="color: red;">
+                Nit invalida solo se aceptan numeros
+            </small>
+            <br>
+            <label>Estado de la sucursal</label>
+            <mat-form-field>
+                <mat-label style="color: #000000;">Estado actual:
+                    <b>{{branchoffice.stateBranchOffice.description}}</b>
+                </mat-label>
+                <mat-select name="descripcion" #descriptionstate="ngModel" [(ngModel)]="branchoffice.stateBranchOffice"
+                    required>
+                    <mat-option *ngFor="let liststate of liststateBranchOffice" [value]="liststate">
+                        {{liststate.description}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <button type="submit" class="btn btn-primary" [disabled]="branchofficeForm.invalid">Actualizar</button>
+        </form>
+        <div class="bn-cancel">
+            <button type="submit" class="btn btn-info c" [routerLink]="['/branchoffice']">Cancelar</button>
+        </div>
+    </div>
+</div>

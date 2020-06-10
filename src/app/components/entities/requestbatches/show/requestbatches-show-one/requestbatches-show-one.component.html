@@ -1,0 +1,17 @@
+<div class="cont-card">
+    <div class="card-head">
+        <h2>{{title}}</h2>
+    </div>
+    <div class="card-body">
+        <h3> Codigo: {{requestbatches.code}}</h3>
+        <h3> Fecha solicitud: {{requestbatches.requestDate}}</h3>
+        <h3>N° Lote: {{requestbatches.production.code}}</h3>
+        <h3>Fecha Inicio: {{requestbatches.production.startOrderDate}}</h3>
+        <h3>Fecha Expiracion: {{requestbatches.production.expirationDate}}</h3>
+        <h3>Analisis Solicitud: {{requestbatches.state.description}}</h3>
+        <div class="card-btn">
+            <button type="submit" class="btn btn-info c" [routerLink]="['/requestbatches']">Regresar</button>
+        </div>
+    </div>
+   
+</div>

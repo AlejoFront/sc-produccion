@@ -1,3 +1,3 @@
 export var Global = {
-    url: 'http://localhost:8080/scm-unibague/'
+    url: 'https://quiet-crag-80659.herokuapp.com/scm-unibague/'
   };

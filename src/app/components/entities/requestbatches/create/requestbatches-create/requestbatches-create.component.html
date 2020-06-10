@@ -1,0 +1,56 @@
+<mat-dialog-content class="mat-typography me">
+  <div class="formu">
+    <div class="head-form">
+      <h2 mat-dialog-title>{{page_title}}</h2>
+    </div>
+    <div class="body form">
+
+      <form #requestbat="ngForm" (ngSubmit)="save()">
+
+        <div class="p-3">
+
+          <div class="col p-1">
+            <label>fecha solicitud</label>
+            <input type="date" name="requestDate" #requestDate="ngModel" [(ngModel)]="requestbatches.requestDate"
+              class="form-control" placeholder="escriba la direccion">
+
+          </div>
+
+          <div class="col p-1">
+            <mat-form-field>
+              <mat-label style="color: #000000;">N° de lote:
+              </mat-label>
+              <mat-select name="productcode" #productcode="ngModel" 
+                  [(ngModel)]="requestbatches.production" required>
+                  <mat-option *ngFor="let listproduc of listproduction" [value]="listproduc">
+                      {{listproduc.code}}
+                  </mat-option>
+              </mat-select>
+          </mat-form-field>
+          </div>
+
+          <div class="col p-1">
+
+             <mat-form-field>
+              <mat-label>Analisis Solicitud</mat-label>
+              <mat-select name="state" #state="ngModel" [(ngModel)]="requestbatches.state" required>
+                <mat-option *ngFor="let liststate of liststaterequestpk" [value]="liststate">
+                  {{liststate.description}}
+              </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+
+          </div>
+
+
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="requestbat.invalid">Guardar</button>
+      </form>
+    </div>
+  </div>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close class="btn btn-danger">Cancel</button>
+</mat-dialog-actions>

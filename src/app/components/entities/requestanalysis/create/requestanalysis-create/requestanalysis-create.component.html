@@ -1,0 +1,40 @@
+<mat-dialog-content class="mat-typography me">
+    <div class="formu">
+      <div class="head-form">
+        <h2 mat-dialog-title>{{page_title}}</h2>
+      </div>
+      <div class="body form">
+        <form #requeststatusForm="ngForm" (ngSubmit)="save()">
+          <div class="p-3">
+
+            <div class="col p-1">
+              <label>code</label>
+              <input type="number" name="code" #code="ngModel" 
+              [(ngModel)]="requestanalysis.code" class="form-control" 
+              placeholder="escriba la direccion" required>
+              <small *ngIf="!code.valid && code.touched" style="color: red;">
+                code invalido
+            </small>
+            </div>
+
+            <div class="col p-1">
+              <mat-form-field>
+                <mat-label>estado solicitud</mat-label>
+                <mat-select name="descripcion" #descripcion="ngModel" 
+                [(ngModel)]="requestanalysis.requestStatus" required >
+                  <mat-option *ngFor="let liststate of listrequeststates" [value]="liststate.code">
+                    {{liststate.description}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field> 
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">{{btn}}</button>
+        </form>
+      </div>
+    </div>
+  
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close class="btn btn-danger">Cancel</button>
+  </mat-dialog-actions>

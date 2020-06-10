@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http'
 import {Global} from '../services/global'
-import { Observable, from } from 'rxjs';
+import { Observable, from, Subject } from 'rxjs';
 import { StateBranchOffice } from '../model/stateBranchOffice';
 @Injectable({
     providedIn: 'root'
@@ -19,11 +19,13 @@ export class BranchofficeService {
         let params= JSON.stringify(branchoffice);
         let headers = new
         HttpHeaders().set('Content-Type', 'application/json');
-        return this._http.post(this.url+'/BranchOffice',params,{headers: headers});
+        return this._http.post(this.url+'BranchOffice',params,{headers: headers});
     }
 
+    private listbranch = new Subject<string>();
+
     getBranchoffices():Observable<any>{
-        return this._http.get(this.url+'/BranchOffice');
+        return this._http.get(this.url+'BranchOffice');
     }
 
     getAllStateBranch():Observable<StateBranchOffice[]>{
@@ -43,5 +45,13 @@ export class BranchofficeService {
     deleteBranchoffice(code):Observable<any>{
         let headers = new HttpHeaders().set('Content-Type', 'application/json');
         return this._http.delete(this.url+'BranchOffice/'+code, {headers:headers});
+    }
+
+    listbranches(): Observable<string>{
+        return this.listbranch.asObservable();
+    }
+
+    filter(filterBy: string){
+        this.listbranch.next(filterBy);
     }
 }

@@ -1,0 +1,32 @@
+<mat-form-field>
+    <input autocomplete="off" matInput (keyup)="applyFilterbranch($event.target.value)" 
+        placeholder="¿Que buscas?">
+</mat-form-field>
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="listbranch" matSort class="tb-top">
+        <ng-container matColumnDef="code">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="th-title"> Codigo</th>
+            <td mat-cell *matCellDef="let element"> {{element.code}} </td>
+        </ng-container>
+        <ng-container matColumnDef="address">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="th-title"> Direccion </th>
+            <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="enterpriseNit">
+            <th mat-header-cell *matHeaderCellDef class="th-title"> Nit </th>
+            <td mat-cell *matCellDef="let element"> {{element.enterpriseNit}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="stateBranchOffice">
+            <th mat-header-cell *matHeaderCellDef class="th-title"> Estado </th>
+            <td mat-cell *matCellDef="let element"> {{element.stateBranchOffice.description}} </td>
+        </ng-container>
+        
+        <tr mat-header-row *matHeaderRowDef="headerbranch"></tr>
+        <tr mat-row *matRowDef="let row; columns: headerbranch;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>

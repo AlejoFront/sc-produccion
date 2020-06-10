@@ -1,0 +1,33 @@
+<div class="cont-padre cont-padre-ad">
+    <div class="tab-head">
+        <h2>{{title}}</h2>
+    </div>
+    <div class="tab-body">
+        <div class="btn-agregar"><button [routerLink]="['/paneladmin']" class="bn-return">regresar al panel</button></div>
+        <table class="tab">
+                <tr class="tr">
+                    <th class="th">Codigo</th>
+                    <th class="th">fecha solicitud</th>
+                    <th class="th">lote produccion N°</th>
+                    <th class="th">fecha inicio de produccion</th>
+                    <th class="th">fecha Expiracion</th>
+                    <th class="th">Analisis de solicitud</th>
+                    <th class="th">Acciones</th>
+                </tr>
+                <tr *ngFor="let requestbatch of requestbatches" class="tr">
+                    <th class="th">{{requestbatch.code}}</th>
+                    <th class="th">{{requestbatch.requestDate}}</th>
+                    <th class="th">{{requestbatch.production.code}}</th>
+                    <th class="th">{{requestbatch.production.startOrderDate}}</th>
+                    <th class="th">{{requestbatch.production.expirationDate}}</th>
+                    <th class="th">{{requestbatch.state.description}}</th>
+                    <th>
+                        <button id="btn-ver" type="submit" [routerLink]="['/requestbatches/show/', requestbatch.code]"><i class="fas fa-eye"></i> Ver</button>&nbsp;
+                        <button id="btn-edit" type="submit" [routerLink]="['/requestbatches/', requestbatch.code]"><i class="fas fa-edit"></i> Editar</button>&nbsp;
+                        <button id="btn-del" type="submit" (click)="deleterequestbatches(requestbatch.code)"><i class="fas fa-trash-alt"></i> Eliminar</button> 
+                    </th>
+                </tr>
+
+        </table>
+    </div>
+</div>

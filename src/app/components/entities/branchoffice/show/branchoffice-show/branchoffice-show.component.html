@@ -1,0 +1,31 @@
+<div class="cont-padre">
+    <div class="tab-head">
+        <h2>{{title}}</h2>
+    </div>
+    <div class="tab-body">
+        <div class="btn-agregar">
+            <button [routerLink]="['/paneladmin']" class="bn-return">regresar al panel</button>
+        </div>
+        <table class="tab">
+                <tr class="tr">
+                    <th class="th">Codigo</th>
+                    <th class="th">Direccion</th>
+                    <th class="th">Nit</th>
+                    <th class="th">Estado</th>
+                    <th class="th">Acciones</th>
+                </tr>
+                <tr *ngFor="let branchoffice of branchoffices" class="tr">
+                    <th class="th">{{branchoffice.code}}</th>
+                    <th class="th">{{branchoffice.address}}</th>
+                    <th class="th">{{branchoffice.enterpriseNit}}</th>
+                    <th class="th">{{branchoffice.stateBranchOffice.description}}</th>
+                    <th class="th">
+                        <button id="btn-ver" type="submit" [routerLink]="['/branchoffice/show/', branchoffice.code]"><i class="fas fa-eye"></i> Ver</button>&nbsp;
+                        <button id="btn-edit" type="submit" [routerLink]="['/branchoffice/', branchoffice.code]"><i class="fas fa-edit"></i> Editar</button>&nbsp;
+                        <button id="btn-del" type="submit" (click)="deletebranchoffice(branchoffice.code)"><i class="fas fa-trash-alt"></i> Eliminar</button> 
+                    </th>
+                </tr>
+
+        </table>
+    </div>
+</div>

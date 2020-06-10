@@ -1,0 +1,19 @@
+<div class="form-edit">
+    <div class="form-head">
+        <h2>{{page_title}}</h2>
+    </div>
+    <div class="form-body-edit">
+        <form #statebranchofficeForm="ngForm" (ngSubmit)="save()">
+            <label>Descripcion</label>
+            <input name="description" #description="ngModel" 
+            [(ngModel)]="statebranchoffice.description" required pattern="[a-zA-Z]+">
+            <small *ngIf="!description.valid && description.touched" style="color: red;">
+                descripcion invalida solo texto
+            </small>
+            <button type="submit" class="btn btn-primary" [disabled]="statebranchofficeForm.invalid">Actualizar</button>           
+        </form>
+        <div class="bn-cancel">
+            <button type="submit" class="btn btn-info c" [routerLink]="['/StateBranchOffice']">Cancelar</button>
+        </div>
+    </div>
+</div>

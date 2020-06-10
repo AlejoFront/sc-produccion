@@ -1,0 +1,39 @@
+<div class="panel-header">
+    <h3>Maquinas Disponibles</h3>
+</div>
+<mat-form-field>
+    <input autocomplete="off" matInput (keyup)="applyFilter($event.target.value)" 
+        placeholder="¿Que buscas?">
+</mat-form-field>
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="listmachinemto" matSort class="tb-top">
+        <ng-container matColumnDef="code">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="th-title"> Codigo</th>
+            <td mat-cell *matCellDef="let element"> {{element.code}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="th-title"> descripcion </th>        
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="productionCapacity">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="th-title"> capacidad </th>        
+            <td mat-cell *matCellDef="let element"> {{element.productionCapacity}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="reference">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="th-title"> referencia </th>        
+            <td mat-cell *matCellDef="let element"> {{element.reference}} </td>
+        </ng-container>
+
+        
+        <tr mat-header-row *matHeaderRowDef="headermto"></tr>
+        <tr mat-row *matRowDef="let row; columns: headermto;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close class="btn btn-danger">Cerrar</button>
+</mat-dialog-actions>

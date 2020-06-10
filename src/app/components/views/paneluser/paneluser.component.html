@@ -1,0 +1,58 @@
+<div class="panel-general">
+    <div class="panel-g">
+        <div class="paneladmin">
+            <div class="panel-header">
+                <h3>Analisis produccion</h3>
+            </div>
+            <div class="panel-body">
+    
+                <div class="btn-add-panel">
+                  
+                </div>
+                <app-timeremaining></app-timeremaining>
+            </div>
+        </div>
+    
+        <div class="paneladmin">
+            <div class="panel-header">
+                <h3>Informacion Maquina</h3>
+            </div>
+            <div class="panel-body">
+                <div class="btn-add-panel">
+
+                </div>
+                <app-infomachinery></app-infomachinery>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel-g">
+        <div class="paneladmin">
+            <div class="panel-header">
+                <h3>Listado de maquinas por estado</h3>
+            </div>
+            <div class="panel-body">       
+                <div class="btn-add-panel">
+                    <app-machinerydisponible-dialog></app-machinerydisponible-dialog>
+                    <app-machineryocupada-dialog></app-machineryocupada-dialog>
+                    <app-machineryreparacion-dialog></app-machineryreparacion-dialog>
+                    <app-machinerymto-dialog></app-machinerymto-dialog>                
+                </div>
+                
+            </div>
+        </div>
+    
+        <div class="paneladmin">
+            <div class="panel-header">
+                <h3>Informacion Recurso Humano & Procesos</h3>
+            </div>
+            <div class="panel-body">
+                <div class="btn-add-panel">
+                    <app-humanresource-dialog></app-humanresource-dialog>
+                </div>
+                <app-otherinfo></app-otherinfo>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br><br>

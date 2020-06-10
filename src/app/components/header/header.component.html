@@ -1,23 +1,21 @@
 <header id="header">
-    <nav id="menu">
+    <div class="logo">
+      <img src="../../../assets/images/produccion.png" alt="no esta la imagen">
+    </div>
+    <nav class="menu">
       <ul>
         <li>
-          <i class="fas fa-home"></i> <a [routerLink]="['/home']">  Inicio</a>
+          <i class="fas fa-home hd"></i> <a [routerLink]="['/home']">  Inicio</a>
         </li>
         <li>
-          <a [routerLink]="['/machinestate']">Machine State</a>
+          <i class="fas fa-wrench hd"></i> <a [routerLink]="['/paneladmin']"> Panel Admin</a>
+        </li>
+
+        <li>
+          <i class="fas fa-th hd"></i> <a [routerLink]="['/paneluser']"> Informe</a>
         </li>
         <li>
-          <a [routerLink]="['/requeststatus']">Request Status</a>
-        </li>
-        <li>
-          <a [routerLink]="['/StateBranchOffice']">State Branch Office</a>
-        </li>
-        <li>
-          <a [routerLink]="['/requestanalysis']">Request Analysis</a>
-        </li>
-        <li>
-          <a [routerLink]="['/branchoffice']">Branch Office</a>
+          <i class="fas fa-users hd"></i>  <app-info-show-dialog></app-info-show-dialog>
         </li>
       </ul>
     </nav>

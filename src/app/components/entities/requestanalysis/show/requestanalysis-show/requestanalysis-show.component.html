@@ -1,0 +1,25 @@
+<div class="cont-padre">
+    <div class="tab-head">
+        <h2>{{title}}</h2>
+    </div>
+    <div class="tab-body">
+        <div class="btn-agregar"><button [routerLink]="['/paneladmin']" class="bn-return">regresar al panel</button></div>
+        <table class="tab">
+                <tr class="tr">
+                    <th class="th">Codigo</th>
+                    <th class="th">Requeststatus</th>
+                    <th class="th">Acciones</th>
+                </tr>
+                <tr *ngFor="let requestanalyse of requestanalysis" class="tr">
+                    <th class="th">{{requestanalyse.requestAnalysisPK.code}}</th>
+                    <th class="th">{{requestanalyse.requestAnalysisPK.requestStatus.description}}</th>
+                    <th class="th">
+                        <button id="btn-ver" type="submit" (click)="build()"><i class="fas fa-eye"></i> Ver</button>&nbsp;
+                        <button id="btn-edit" type="submit" (click)="build()"><i class="fas fa-edit"></i> Editar</button>&nbsp;
+                        <button id="btn-del" type="submit" (click)="deleterequestanalysis(requestanalyse.requestAnalysisPK.code)"><i class="fas fa-trash-alt"></i> Eliminar</button>
+                    </th>
+                </tr>
+
+        </table>
+    </div>
+</div>

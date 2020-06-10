@@ -1,0 +1,49 @@
+<mat-dialog-content class="mat-typography me">
+  <div class="formu">
+    <div class="head-form">
+      <h2 mat-dialog-title>{{page_title}}</h2>
+    </div>
+    <div class="body form">
+      <form #branchofficeForm="ngForm" (ngSubmit)="save()">
+        <div class="p-3">
+          <div class="col p-1">
+            <label>direccion</label>
+            <input type="text" name="direccion" #direccion="ngModel" [(ngModel)]="branchoffice.address"
+              class="form-control" placeholder="escriba la direccion" required>
+            <small *ngIf="!direccion.valid && direccion.touched" style="color: red;">
+              Direccion invalida
+            </small>
+          </div>
+
+          <div class="col p-1">
+            <label>Nit</label>
+            <input type="text" name="nit" #nit="ngModel" [(ngModel)]="branchoffice.enterpriseNit" class="form-control"
+              placeholder="escriba el nit de la sucursal" required pattern="[0-9]+">
+            <small *ngIf="!nit.valid && nit.touched" style="color: red;">
+              nit invalida
+            </small>
+
+          </div>
+
+          <div class="col p-1">
+            <mat-form-field>
+              <mat-label>descripcion estado</mat-label>
+              <mat-select name="descripcion" #descriptionstate="ngModel" [(ngModel)]="branchoffice.stateBranchOffice"
+                required>
+                <mat-option *ngFor="let liststate of liststateBranchOffice" [value]="liststate">
+                  {{liststate.description}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="branchofficeForm.invalid">Guardar</button>
+      </form>
+    </div>
+  </div>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close class="btn btn-danger">Cancel</button>
+</mat-dialog-actions>

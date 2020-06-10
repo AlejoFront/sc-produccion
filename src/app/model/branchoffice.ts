@@ -3,6 +3,6 @@ export class Branchoffice {
         public code: number,
         public address: String,
         public enterpriseNit: String,
-        public stateBranchOffice: number 
+        public stateBranchOffice: any 
     ){}
 }

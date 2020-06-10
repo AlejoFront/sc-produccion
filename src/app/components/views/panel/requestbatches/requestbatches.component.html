@@ -1,0 +1,45 @@
+<mat-form-field>
+    <input autocomplete="off" matInput (keyup)="applyFilterbatch($event.target.value)" 
+        placeholder="¿Que buscas?">
+</mat-form-field>
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="listrequestbatches" matSort class="tb-top">
+
+
+        <ng-container matColumnDef="code">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="th-title"> Codigo</th>
+            <td mat-cell *matCellDef="let element"> {{element.code}} </td>
+        </ng-container>                     
+
+
+        <ng-container matColumnDef="requestDate">
+            <th mat-header-cell *matHeaderCellDef class="th-title"> Fech. Solicitud </th>
+            <td mat-cell *matCellDef="let element"> {{element.requestDate}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="production">
+            <th mat-header-cell *matHeaderCellDef class="th-title"> N° Lote </th>
+            <td mat-cell *matCellDef="let element"> {{element.production.code}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="startproduc">
+            <th mat-header-cell *matHeaderCellDef class="th-title"> Fech. inicio produccion </th>
+            <td mat-cell *matCellDef="let element"> {{element.production.startOrderDate}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="endtproduc">
+            <th mat-header-cell *matHeaderCellDef class="th-title"> Fech. fin produccion </th>
+            <td mat-cell *matCellDef="let element"> {{element.production.expirationDate}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="state">
+            <th mat-header-cell *matHeaderCellDef class="th-title"> Estado Analisis Solicitud </th>
+            <td mat-cell *matCellDef="let element"> {{element.state.description}} </td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="headerequestbatches"></tr>
+        <tr mat-row *matRowDef="let row; columns: headerequestbatches;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>    
+</div>
